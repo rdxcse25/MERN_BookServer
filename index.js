@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT||5000
 const cors = require('cors')
+require('dotenv').config();
+
 
 //middleware
 
@@ -27,7 +29,7 @@ app.get('/', (req, res) => {
 
 //mongoDB configuration
 const { MongoClient, ServerApiVersion, ObjectId} = require('mongodb');
-const uri = "mongodb+srv://mern-book-store:princerituraj20@cluster0.1iq2lmj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = process.env.MONGO_DB;
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
